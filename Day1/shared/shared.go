@@ -2,9 +2,20 @@ package shared
 
 import (
 	"fmt"
+	"io/ioutil"
 	"strconv"
 	"strings"
 )
+
+func ReadFileLines(filePath string) []string {
+	content, err := ioutil.ReadFile(filePath)
+
+	if err != nil {
+		fmt.Println(err.Error())
+	}
+
+	return strings.Split(string(content), "\n")
+}
 
 func ConvertStringArrToIntArr(stArr []string) []int {
 	var intArr []int

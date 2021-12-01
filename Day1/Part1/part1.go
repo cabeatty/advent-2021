@@ -2,20 +2,10 @@ package part1
 
 import (
 	shr "day1/shared"
-	"fmt"
-	"io/ioutil"
-	"strings"
 )
 
 func Solve() int {
-
-	content, err := ioutil.ReadFile("part1/input.txt")
-
-	if err != nil {
-		fmt.Println(err.Error())
-	}
-
-	stLines := strings.Split(string(content), "\n")
+	stLines := shr.ReadFileLines("part1/input.txt")
 	intLines := shr.ConvertStringArrToIntArr(stLines)
 	count := 0
 
