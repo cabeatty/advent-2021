@@ -1,22 +1,22 @@
-package main
+package part1
 
 import (
+	shr "day1/shared"
 	"fmt"
 	"io/ioutil"
-	"strconv"
 	"strings"
 )
 
-func main() {
+func Solve() int {
 
-	content, err := ioutil.ReadFile("input.txt")
+	content, err := ioutil.ReadFile("part1/input.txt")
 
 	if err != nil {
 		fmt.Println(err.Error())
 	}
 
 	stLines := strings.Split(string(content), "\n")
-	intLines := ConvertStringArrToIntArr(stLines)
+	intLines := shr.ConvertStringArrToIntArr(stLines)
 	count := 0
 
 	for ind := 1; ind < len(intLines); ind++ {
@@ -25,20 +25,5 @@ func main() {
 		}
 	}
 
-	fmt.Println(count)
-}
-
-func ConvertStringArrToIntArr(stArr []string) []int {
-	var intArr []int
-	for _, stValue := range stArr {
-		cleanStValue := strings.Replace(stValue, "\r", "", -1)
-		intVar, err := strconv.Atoi(cleanStValue)
-
-		if err != nil {
-			fmt.Println(err)
-		} else {
-			intArr = append(intArr, intVar)
-		}
-	}
-	return intArr
+	return count
 }
